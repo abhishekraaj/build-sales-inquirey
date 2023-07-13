@@ -8,6 +8,7 @@ import Table from './COMPONENTS/Table';
 import store from './STORE/Store';
 
 
+
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/table' element={<Table/>}/>
+       
       </Routes>
       
       </BrowserRouter>

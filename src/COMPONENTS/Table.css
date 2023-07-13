@@ -1,0 +1,19 @@
+.inq-btn{
+    height: 3rem;
+    width: 10rem;
+    border-radius: 1rem;
+    background-color: blue;
+    color: white;
+   
+}
+.btn-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+}
+.container{
+    width: 99.7vw;
+    /* border: 2px solid black; */
+   
+
+}

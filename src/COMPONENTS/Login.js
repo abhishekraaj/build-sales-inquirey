@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import {useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { login } from '../ACTION/Action';
+import './Login.css'
 
 function Login() {
     const dispatch = useDispatch();
@@ -10,73 +11,44 @@ function Login() {
     const nav = useNavigate()
     
     const loginDetails = {
-        email,
-        password,
+        email,password
     }
     const handlelogin = (e) => {
+        if (email.trim() === '' || password.trim() === '') {
+            alert('Please enter both email and password.');
+            return; 
+          }
         e.preventDefault();
         dispatch(login(loginDetails));
+        nav("/table")
        
     }
 
     return (
-        <div>
-            <h1>LogIn Page For Sales Inquiry !.</h1>
+        <div className='login-container'>
+            <h1 className="login-title" >LogIn Page For Sales Inquiry !.</h1>
             <input
                 type="text"
                 placeholder="Username"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                className="login-input"
             />
             <input
               type="text"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
             />
-            <button onClick={handlelogin}>LogIn</button>
+            <button onClick={handlelogin} className="login-button">LogIn</button>
         </div>
     )
 } 
 export default Login;
 
-
-// import React, { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { login } from '../ACTION/Action';
-
-
-// const Login = () => {
-
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const dispatch = useDispatch();
-//   const loading = useSelector((state) => state.loading);
-//   const error = useSelector((state) => state.error);
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     dispatch(login(email, password));
-//   };
-
-//   return (
-//     <div>
-//       <h1>Login to access the sales Inquirey ! ..</h1>
-//       <div>
-//         <label>Email:</label>
-//         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-//       </div>
-//       <div>
-//         <label>Password:</label>
-//         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-//       </div>
-//       {loading && <p>Loading...</p>}
-//       {error && <p>Error: {error}</p>}
-//       <button onClick={handleLogin} disabled={loading}>Login</button>
-//     </div>
-//   );
-
-// };
-
-// export default Login;
+// api
+//Login :
+// http://192.168.20.131/api/login
+// himanhunanikwal@gmail.com
+// Officer@123
